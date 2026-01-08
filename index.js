@@ -24,7 +24,7 @@ const config = {
     'day3': { title: 'Day 03', sub: '01/24 Shopping', icon: 'shopping-bag' },
     'day4': { title: 'Day 04', sub: '01/25 Gourmet', icon: 'utensils-crossed' },
     'day5': { title: 'Day 05', sub: '01/26 Departure', icon: 'plane-takeoff' },
-    'shopping': { title: 'Shopping', sub: '欲求清單', icon: 'list-checks' },
+    'shopping': { title: 'Shopping', sub: '願望清單', icon: 'list-checks' },
     'expense': { title: 'Expenses', sub: '開銷統計', icon: 'wallet' }
 };
 
