@@ -1,17 +1,59 @@
+// 引入 Firebase SDK
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
+import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+
+// --- Firebase 配置 (請替換成你的專案金鑰) ---
+const firebaseConfig = {
+    apiKey: "AIzaSyDInzShz5EbwHY4eIanTXzTuaCQfj1Mhp0",
+    authDomain: "okinawa-2026-fca10.firebaseapp.com",
+    projectId: "okinawa-2026-fca10",
+    storageBucket: "okinawa-2026-fca10.firebasestorage.app",
+    messagingSenderId: "303454497028",
+    appId: "1:303454497028:web:0f5c79a3488f7ac5dd4851",
+    measurementId: "G-12K0H15NRQ"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const docRef = doc(db, "itinerary", "gIN2cSCVSD7OGjBVHU9x"); // 儲存於單一文件
+
 const config = {
     'day1': { title: 'Day 01', sub: '01/22 Arrival', icon: 'plane-landing' },
     'day2': { title: 'Day 02', sub: '01/23 Explore', icon: 'fish' },
     'day3': { title: 'Day 03', sub: '01/24 Shopping', icon: 'shopping-bag' },
     'day4': { title: 'Day 04', sub: '01/25 Gourmet', icon: 'utensils-crossed' },
     'day5': { title: 'Day 05', sub: '01/26 Departure', icon: 'plane-takeoff' },
-    'shopping': { title: 'Shopping', sub: '慾望清單', icon: 'list-checks' },
+    'shopping': { title: 'Shopping', sub: '欲求清單', icon: 'list-checks' },
     'expense': { title: 'Expenses', sub: '開銷統計', icon: 'wallet' }
 };
 
-let shoppingData = JSON.parse(localStorage.getItem('oka_shop') || '[]');
-let expenseData = JSON.parse(localStorage.getItem('oka_exp') || '[]');
+let shoppingData = [];
+let expenseData = [];
 
-function switchTab(tabId) {
+// --- 初始化：監聽雲端資料變化 (Real-time Update) ---
+function initDataSync() {
+    onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            shoppingData = data.shopping || [];
+            expenseData = data.expense || [];
+            renderShopping();
+            renderExpense();
+        }
+    });
+}
+
+// 將資料推送到 Firebase
+async function syncToFirebase() {
+    await setDoc(docRef, {
+        shopping: shoppingData,
+        expense: expenseData
+    }, { merge: true });
+}
+
+// 修改後的導航切換
+window.switchTab = function(tabId) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.getElementById(tabId).classList.add('active');
 
@@ -34,43 +76,39 @@ function switchTab(tabId) {
     window.scrollTo(0, 0);
 }
 
-function addItem(type) {
+// 修改後的新增項目
+window.addItem = async function(type) {
     if(type === 'shopping') {
         const input = document.getElementById('shop-input');
         if(!input.value) return;
         shoppingData.push({ id: Date.now(), text: input.value, done: false });
         input.value = '';
-        saveData();
-        renderShopping();
     } else {
-        const title = document.getElementById('exp-title'), amount = document.getElementById('exp-amount'), pay = document.getElementById('exp-pay'), user = document.getElementById('exp-user');
+        const title = document.getElementById('exp-title'), 
+              amount = document.getElementById('exp-amount'), 
+              pay = document.getElementById('exp-pay'), 
+              user = document.getElementById('exp-user');
         if(!title.value || !amount.value) return;
         expenseData.push({ id: Date.now(), title: title.value, amount: parseFloat(amount.value), method: pay.value, user: user.value });
         title.value = ''; amount.value = '';
-        saveData();
-        renderExpense();
     }
+    await syncToFirebase();
 }
 
-function toggleShop(id) {
+window.toggleShop = async function(id) {
     shoppingData = shoppingData.map(i => i.id === id ? {...i, done: !i.done} : i);
-    saveData(); renderShopping();
+    await syncToFirebase();
 }
 
-function deleteItem(type, id) {
+window.deleteItem = async function(type, id) {
     if(type === 'shopping') shoppingData = shoppingData.filter(i => i.id !== id);
     else expenseData = expenseData.filter(i => i.id !== id);
-    saveData();
-    type === 'shopping' ? renderShopping() : renderExpense();
-}
-
-function saveData() {
-    localStorage.setItem('oka_shop', JSON.stringify(shoppingData));
-    localStorage.setItem('oka_exp', JSON.stringify(expenseData));
+    await syncToFirebase();
 }
 
 function renderShopping() {
     const container = document.getElementById('shop-list');
+    if (!container) return;
     container.innerHTML = shoppingData.map(item => `
         <div class="list-item">
             <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleShop(${item.id})">
@@ -83,6 +121,7 @@ function renderShopping() {
 
 function renderExpense() {
     const container = document.getElementById('exp-list');
+    if (!container) return;
     let total = 0;
     container.innerHTML = expenseData.map(item => {
         total += item.amount;
@@ -98,12 +137,10 @@ function renderExpense() {
             </div>
         </div>`;
     }).join('');
-    document.getElementById('total-amount').innerText = `¥ ${total.toLocaleString()}`;
+    const totalEl = document.getElementById('total-amount');
+    if(totalEl) totalEl.innerText = `¥ ${total.toLocaleString()}`;
     lucide.createIcons();
 }
 
-window.onload = () => {
-    lucide.createIcons();
-    renderShopping();
-    renderExpense();
-};
+// 初始化
+initDataSync();
