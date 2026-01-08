@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Okinawa 2026 🌊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/index.js"></script>
+</head>
+<body>
+    <div class="safe-area-top"></div>
+    
+    <header class="px-6 py-4 flex justify-between items-center">
+        <div>
+            <div id="day-icon-container" class="mb-1 text-orange-400">
+                <i id="header-icon" data-lucide="plane-landing"></i>
+            </div>
+            <h1 id="page-title" class="text-2xl font-black text-[#5d4d42]">Day 01</h1>
+            <p id="page-subtitle" class="text-xs opacity-60 font-medium">2026/01/22 Arrival</p>
+        </div>
+        <div class="bg-white px-3 py-1 rounded-full shadow-sm text-[10px] font-bold text-blue-400 border border-blue-100">
+            OKINAWA 🌊
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- DAY 1 -->
+        <div id="day1" class="tab-content active">
+            <div class="app-card border-t-8 border-[#74c0fc]">
+                <div class="bg-slate-50 rounded-xl p-4 mb-4 border border-slate-100">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] font-black text-blue-500 tracking-tighter uppercase">China Airlines CI122</span>
+                        <span class="text-[10px] text-gray-400">TPE ✈ OKA</span>
+                    </div>
+                    <div class="flex items-center justify-around py-2">
+                        <div class="text-center">
+                            <div class="text-xl font-black">TPE</div>
+                            <div class="flight-badge">第二航廈</div>
+                            <div class="text-[12px] font-bold text-gray-600 mt-1">16:50</div>
+                        </div>
+                        <i data-lucide="plane" class="text-blue-200"></i>
+                        <div class="text-center">
+                            <div class="text-xl font-black">OKA</div>
+                            <div class="flight-badge">第一航廈</div>
+                            <div class="text-[12px] font-bold text-gray-600 mt-1">19:20</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 bg-pink-50 rounded-xl border border-pink-100">
+                    <span class="tag bg-pink-200 text-pink-600">🏨 飯店入住</span>
+                    <h3 class="font-black text-lg">Hotel Okinawa with Sanrio</h3>
+                    <p class="text-[11px] mb-3 opacity-70">📍 安里站步行即可抵達，三麗鷗主題飯店。</p>
+                    <a href="https://goo.gl/maps/h1rncmXAUxPygeYX7" target="_blank" class="btn-action btn-pink w-full">
+                        <i data-lucide="map-pin" size="16"></i> 查看地圖
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- DAY 2 -->
+        <div id="day2" class="tab-content">
+            <div class="app-card border-t-8 border-[#ff9f43]">
+                <div class="mb-4 p-4 bg-blue-50 rounded-xl border border-blue-100">
+                    <span class="tag bg-blue-200 text-blue-600">🏨 更換飯店</span>
+                    <h3 class="font-bold">La'gent Hotel Naha</h3>
+                    <a href="https://goo.gl/maps/cHCpo7TtTCGoQ3bQ6" target="_blank" class="text-blue-500 text-xs font-bold mt-1 block underline">開啟導航</a>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-4 bg-slate-50 rounded-xl">
+                        <h3 class="font-bold flex items-center gap-2"><i data-lucide="camera" size="16"></i> DMM 水族館</h3>
+                        <a href="https://goo.gl/maps/vjwqMQk8dMTa5i2J9" target="_blank" class="btn-action btn-orange mt-2 w-full">導航</a>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl">
+                        <h3 class="font-bold flex items-center gap-2"><i data-lucide="sunset" size="16"></i> 瀨長島 Umikaji Terrace</h3>
+                        <a href="https://goo.gl/maps/529NtZtJjbptGcFR9" target="_blank" class="btn-action btn-orange mt-2 w-full">導航</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DAY 3 -->
+        <div id="day3" class="tab-content">
+            <div class="app-card border-t-8 border-[#2ecc71]">
+                <div class="space-y-4">
+                    <div class="p-4 bg-green-50 rounded-xl">
+                        <span class="tag bg-green-200 text-green-700">📸 文青必訪</span>
+                        <h3 class="font-bold">港川外人住宅</h3>
+                        <p class="text-xs opacity-60">特色咖啡廳與選物店聚集。</p>
+                        <a href="https://goo.gl/maps/mBK2wDkFfJ6iXxEm6" target="_blank" class="btn-action btn-orange mt-2 w-full">導航</a>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl">
+                        <span class="tag bg-slate-200 text-slate-700">🛍️ 購物</span>
+                        <h3 class="font-bold">SAN-A PARCO CITY</h3>
+                        <p class="text-xs opacity-60">沖繩最大規模購物商場。</p>
+                        <a href="https://goo.gl/maps/6MsoQJSwubL1dWoM8" target="_blank" class="btn-action btn-blue mt-2 w-full">導航</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DAY 4 -->
+        <div id="day4" class="tab-content">
+            <div class="app-card border-t-8 border-[#9b59b6]">
+                <div class="space-y-4">
+                    <div class="p-4 bg-red-50 rounded-xl">
+                        <span class="tag bg-red-200 text-red-700">🥩 燒肉</span>
+                        <h3 class="font-bold">燒肉本部牧場 那霸店</h3>
+                        <p class="text-xs opacity-60">沖繩必吃高品質和牛。</p>
+                        <a href="https://goo.gl/maps/4KusKng4sqkHxt7CA" target="_blank" class="btn-action btn-orange mt-2 w-full">導航</a>
+                    </div>
+                    <div class="p-4 bg-yellow-50 rounded-xl">
+                        <span class="tag bg-yellow-200 text-yellow-700">🍔 特色</span>
+                        <h3 class="font-bold">JEF Sunrise Naha</h3>
+                        <p class="text-xs opacity-60">在地限定苦瓜漢堡。</p>
+                        <a href="https://goo.gl/maps/UFFPP1btig3MYWXr7" target="_blank" class="btn-action btn-orange mt-2 w-full">導航</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DAY 5 -->
+        <div id="day5" class="tab-content">
+            <div class="app-card border-t-8 border-[#e74c3c]">
+                <div class="p-4 bg-slate-50 rounded-xl mb-4">
+                    <span class="tag bg-slate-200 text-slate-700">🛒 最後採買</span>
+                    <h3 class="font-bold">小祿站 Aeon 那霸店</h3>
+                    <a href="https://goo.gl/maps/WgMwFozNd3Fyuo4k8" target="_blank" class="btn-action btn-blue mt-2 w-full">導航</a>
+                </div>
+                
+                <div class="bg-red-50 rounded-xl p-4 border border-red-100">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] font-black text-red-500 tracking-tighter uppercase">China Airlines CI123</span>
+                        <span class="text-[10px] text-gray-400">OKA ✈ TPE</span>
+                    </div>
+                    <div class="flex items-center justify-around py-2">
+                        <div class="text-center">
+                            <div class="text-xl font-black">OKA</div>
+                            <div class="flight-badge">第一航廈</div>
+                            <div class="text-[12px] font-bold text-gray-600 mt-1">20:20</div>
+                        </div>
+                        <i data-lucide="plane-takeoff" class="text-red-300"></i>
+                        <div class="text-center">
+                            <div class="text-xl font-black">TPE</div>
+                            <div class="flight-badge">第二航廈</div>
+                            <div class="text-[12px] font-bold text-gray-600 mt-1">21:00</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center text-[10px] text-gray-400 mt-4 font-bold">Have a nice trip home! 🏠</p>
+            </div>
+        </div>
+
+        <!-- SHOPPING -->
+        <div id="shopping" class="tab-content">
+            <div class="app-card border-t-8 border-pink-400">
+                <div class="input-group">
+                    <input type="text" id="shop-input" placeholder="想要買的東西...">
+                    <button onclick="addItem('shopping')" class="bg-pink-400 text-white p-3 rounded-xl">
+                        <i data-lucide="plus"></i>
+                    </button>
+                </div>
+                <div id="shop-list" class="space-y-2"></div>
+            </div>
+        </div>
+
+        <!-- EXPENSE -->
+        <div id="expense" class="tab-content">
+            <div class="app-card border-t-8 border-blue-400">
+                <div class="space-y-2 mb-4">
+                    <input type="text" id="exp-title" placeholder="項目名稱">
+                    <div class="flex gap-2">
+                        <input type="number" id="exp-amount" placeholder="金額">
+                        <select id="exp-pay">
+                            <option value="現金">現金</option>
+                            <option value="信用卡">信用卡</option>
+                        </select>
+                    </div>
+                    <select id="exp-user" class="w-full">
+                        <option value="我本人">我本人</option>
+                        <option value="同行夥伴">同行夥伴</option>
+                    </select>
+                    <button onclick="addItem('expense')" class="w-full bg-blue-500 text-white p-3 rounded-xl mt-2 font-bold">新增紀錄</button>
+                </div>
+                <div id="exp-list" class="space-y-2"></div>
+                <div class="mt-6 p-4 bg-slate-100 rounded-2xl flex justify-between items-center">
+                    <span class="font-bold">總支出總計</span>
+                    <span id="total-amount" class="text-xl font-black text-blue-600">¥ 0</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <nav class="nav-bar">
+        <button class="nav-item active" onclick="switchTab('day1')"><i data-lucide="plane-landing"></i><span>D1</span></button>
+        <button class="nav-item" onclick="switchTab('day2')"><i data-lucide="fish"></i><span>D2</span></button>
+        <button class="nav-item" onclick="switchTab('day3')"><i data-lucide="shopping-bag"></i><span>D3</span></button>
+        <button class="nav-item" onclick="switchTab('day4')"><i data-lucide="utensils-crossed"></i><span>D4</span></button>
+        <button class="nav-item" onclick="switchTab('day5')"><i data-lucide="plane-takeoff"></i><span>D5</span></button>
+        <button class="nav-item" onclick="switchTab('shopping')"><i data-lucide="list-checks"></i><span>購物</span></button>
+        <button class="nav-item" onclick="switchTab('expense')"><i data-lucide="wallet"></i><span>記帳</span></button>
+    </nav>
+
+
+</body>
+</html>
+

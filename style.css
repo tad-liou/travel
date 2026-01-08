@@ -1,0 +1,145 @@
+:root { 
+    --milk-tea: #f7f1e9; 
+    --accent-blue: #74c0fc; 
+    --accent-orange: #ff9f43; 
+    --deep-tea: #8d7766; 
+    --sanrio-pink: #ffafcc;
+    --soft-white: #ffffff;
+    --mint-green: #2ecc71;
+    --purple: #9b59b6;
+    --red: #e74c3c;
+}
+
+body { 
+    background-color: var(--milk-tea); 
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    color: var(--deep-tea); 
+    margin: 0; 
+    padding-bottom: 100px;
+    -webkit-font-smoothing: antialiased; 
+    overflow-x: hidden;
+}
+
+.safe-area-top { padding-top: env(safe-area-inset-top, 20px); }
+
+.tab-content { display: none; animation: fadeIn 0.3s ease-out; }
+.tab-content.active { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0 calc(12px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid rgba(141, 119, 102, 0.1);
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: #a18e7e;
+    transition: all 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-item.active { color: var(--accent-orange); }
+
+.app-card { 
+    background: var(--soft-white); 
+    border-radius: 24px; 
+    box-shadow: 0 8px 20px rgba(141, 119, 102, 0.05); 
+    margin: 0 16px 16px; 
+    padding: 20px; 
+}
+
+.btn-action { 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
+    gap: 6px; 
+    padding: 10px 16px; 
+    border-radius: 12px; 
+    font-size: 13px; 
+    font-weight: 600; 
+    transition: all 0.2s;
+    border: none;
+    text-decoration: none;
+}
+
+.btn-blue { background: var(--accent-blue); color: white; }
+.btn-orange { background: var(--accent-orange); color: white; }
+.btn-pink { background: var(--sanrio-pink); color: white; }
+
+.tag {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: #fdfbf9;
+    border-radius: 14px;
+    margin-bottom: 8px;
+    border: 1px solid #f2ede4;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent-orange);
+}
+
+.input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+input[type="text"], input[type="number"], select {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    flex: 1;
+}
+
+.expense-badge {
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: #eee;
+}
+
+.flight-badge {
+    font-size: 10px;
+    background: #e2e8f0;
+    color: #64748b;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 800;
+    margin-top: 4px;
+    display: inline-block;
+}
